@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="./assets/src/css/configModalPix.css">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONZA BANCK - CONTA FÁCIL PARA APOSENTADOS E PENSIONISTAS.</title>
+    <link rel="shortcut icon" type="image/jpg" href="./assets/src/img/monza-favico.png"/>
+  
+    <!-- Importes do Google fontes e FontWasome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- Configurações dos Scripts JS -->
+     <script src="app.mjs" defer></script>
+    <!-- <script type="module" src="./assets/src/js/recuperaUserLocalStorage.mjs" defer></script>
+    <script type="module" src="./assets/src/js/oparacoesBancarias.mjs" defer></script>
+    <script type="module" src="./assets/src/js/logicaDosModaisDoMenuPrincipal.mjs" defer></script> -->
+
+    <!-- Configurações de CSS -->
+    <link rel="stylesheet" href="./assets/src/css/app.css">
+    
+</head>
+<body>
+    <main>
+        <section id="container-modal-main"></section>
+        <section id="main-container-pagina-inicial">
+                <div class="box-perfil-logo">
+                    <img data-perfil = 'foto-user'  src="./assets/src/img/icon-usuario.png" alt="" >
+                    <img data-perfil="logo-inicial" src="./assets/src/img/MONZA.png" alt="">
+                </div>
+
+                <div class="box-saudacao">
+                    <h2>Bom dia, <span data-perfil="nome-user"></span>Pedro</h2>
+                    <h3 data-perfil="data-sistem">26 de Dezembro, 2024</h3>
+                </div>
+
+                <div class="box-saldo">
+
+                    <div>
+                        <p>Seu dinheiro</p>
+                        <p data-perfil="saldo-user">R$ 00.00</p>
+                        <span data-perfil="email-user">@pix-nome-usuario</span>
+                    </div>
+
+                    <div>
+                        <img src="./assets/src/img/MONZA.png" alt="" width="50px">
+                        <img src="./assets/src/img/bb.png" alt="" width="50px">
+
+                        <p class="numbr-card-person">0000 0000 ... 
+                            <i class="fas fa-copy"></i>
+                        </p>
+                    </div>
+                   
+                </div>
+                
+        </section>
+
+        <section id="menu-main">
+            <div data-menu-main="saque" type=""><img src="./assets/src/img/icones-menu/sacar.png" alt="" width="20%"><p>sacar</p> <p></p></div>
+
+            <div data-menu-main="deposito"> <img src="./assets/src/img/icones-menu/depositar.png" alt="" width="20%"><p>depositar</p></div>
+
+            <div data-menu-main="pix"><img src="./assets/src/img/icones-menu/pix.png" alt="" width="20%"><p>fazer pix</p></div>
+
+            <div data-menu-main="pagar"><img src="./assets/src/img/icones-menu/boletos.png" alt="" width="20%"><p>pagar contas</p></div>
+
+            <div data-menu-main="extrato"><img src="./assets/src/img/icones-menu/extrato.png" alt="" width="20%"><p>extrato</p></div>
+
+            <div data-menu-main="mais"><img src="./assets/src/img/icones-menu/mais.png" alt="" width="20%"><p>mais...</p></div>
+        </section>
+
+        <section id="atendimento">
+            <h5>atendimento <i class="fas fa-comments"></i></h5>
+        </section>
+        
+    </main>
+</body>
+</html>

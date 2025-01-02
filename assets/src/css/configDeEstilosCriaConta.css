@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", serif;
+}
+
+#banner-inicial{
+    margin: 0 auto;
+    width: 95vw;
+    height: 40vh;
+    border-radius: 0 0 15px 15px;
+    background-image: url('../img/medium-shot-couple-spending-time-nature.jpg');
+    background-size: cover;
+    background-position-x: -100px;
+}
+
+#texto-apresentacao{
+
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100%;
+    font-size: 2rem;
+    display: flex;
+    overflow: hidden;
+    text-align: left;
+    padding-left: 25px;
+    padding-top: 25px;
+}
+
+#texto-apresentacao div{
+    box-sizing: border-box;
+    width: 100vw;
+    flex-shrink: 0;
+}
+
+#texto-apresentacao label p{
+    display: inline;
+    margin-top: 15px;
+    color: #b0ceaf;
+    font-weight: bold;
+}
+
+
+#texto-apresentacao input{
+    box-sizing: border-box;
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 0 auto;
+    padding: 15px 0;
+    font-size: 1.5rem;
+    color: #b0ceaf;
+
+}
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
+.direction{
+    color: #b0ceaf;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.direction:hover{
+    transition: .5s;
+    color: #76a074;
+}
+
+.criarConta{
+    display: inline;
+    box-sizing: border-box;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.criarConta:hover{
+    transition: .5s;
+    color: #76a074;
+}
+
+.dfddg{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}

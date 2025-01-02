@@ -1,0 +1,135 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: 1s;
+}
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
+body{
+    width: 100vw;
+}
+
+
+p, h1, h2, h3, span, li{
+    display: block;
+    text-align: left;
+    color: azure;
+    font-weight: 300; 
+}
+
+i{
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+
+ #main-modal{
+    font-family: "Open Sans", serif;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 1;
+    top: -100vh;
+    min-width: 450px;
+    min-height: 100vh;
+    overflow: hidden;
+    transition: 1s;
+    background: rgb(27,67,103);
+    background: linear-gradient(139deg, rgb(76, 133, 184) 0%, rgb(50, 162, 211) 34%, rgba(67,117,142,1) 69%, rgba(137,124,82,1) 100%);
+    border-radius: 15px;
+}
+
+.display-um h2{
+    font-size: 2.5rem !important;
+    width: 100%;
+    padding: 25px;
+}
+
+.img-servicos{
+    padding: 25px;
+    width: 40%;
+}
+
+
+.display-flex-modal{
+    box-sizing: border-box;
+    display: flex;
+}
+
+.display-flex-modal div{
+    box-sizing: border-box;
+    flex-shrink: 0;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    padding: 25px 0;
+}
+
+
+.display-um form input{
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    width: 90%;
+    height: 50px;
+    font-size: 2rem;
+    font-weight: normal;
+    background-color: #d6ffd6;
+    color: #81a9ac;
+    padding-left: 20px;
+}
+
+.display-um form input::placeholder{
+    font-size: 1.2rem;
+    color: #81a9ac;
+}
+
+#btn-de-confirmar{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    height: 50px;
+    border-radius: 3px;
+    font-size: 1.5rem;
+    margin-top: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: #d6ffd6;
+    border-radius: 15px;
+    color: #81a9ac;
+}
+
+#btn-de-confirmar:hover{
+    background-color: #353b01;
+    color: aliceblue;
+}
+
+
+.img-barra{
+    margin-top: -10px;
+}
+
+
+.resumo-dos-dados-a-enviar p{
+    padding: 25px;
+    width: 150%;
+    color: azure !important;
+}
+
+.display-um{
+    margin-left: 0%;
+}
+
+.btn-de-desistir-tela-um{
+    font-weight: normal;
+}
+
+.btn-de-desistir-tela-um:hover{
+    font-weight: normal;
+}
