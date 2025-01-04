@@ -12,9 +12,8 @@ main{
     max-width: 450px;
     position: relative;
     border-radius: 25px;
-    background: #f7f9fc;
-    filter: drop-shadow(1px 1px 15px rgba(0, 0, 0, 0.226));
     overflow: auto;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
 }
 
 #main-container-pagina-inicial{
@@ -23,7 +22,7 @@ main{
 }
 
 #main-container-pagina-inicial h2, h3, p{
-    color: #247698 !important;
+    color: #dcf4ff !important;
     display: block;
     width: 100%;
 }
@@ -172,6 +171,10 @@ main{
     line-height: 250%;
 }
 
+#container-modal-menu{
+    position: absolute;
+    top: -100vh;
+}
 
 /* =================================================== */
 

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     
     <!-- Configurações dos Scripts JS -->
-     <script src="app.mjs" defer></script>
+     <script type="module" src="app.mjs" defer></script>
     <!-- <script type="module" src="./assets/src/js/recuperaUserLocalStorage.mjs" defer></script>
     <script type="module" src="./assets/src/js/oparacoesBancarias.mjs" defer></script>
     <script type="module" src="./assets/src/js/logicaDosModaisDoMenuPrincipal.mjs" defer></script> -->
@@ -26,7 +26,7 @@
 </head>
 <body>
     <main>
-        <section id="container-modal-main"></section>
+        <section id="container-modal-menu"></section>
         <section id="main-container-pagina-inicial">
                 <div class="box-perfil-logo">
                     <img data-perfil = 'foto-user'  src="./assets/src/img/icon-usuario.png" alt="" >
@@ -34,8 +34,8 @@
                 </div>
 
                 <div class="box-saudacao">
-                    <h2>Bom dia, <span data-perfil="nome-user"></span>Pedro</h2>
-                    <h3 data-perfil="data-sistem">26 de Dezembro, 2024</h3>
+                    <h2 class="saudacao-tempo-dia">Bom dia, <span data-perfil="nome-user"></span>Pedro</h2>
+                    <h3 data-perfil="data-sistema">26 de Dezembro, 2024</h3>
                 </div>
 
                 <div class="box-saldo">
