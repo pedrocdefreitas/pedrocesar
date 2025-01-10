@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <!-- <link rel="stylesheet" href="../css/configModalSaque.css"> -->
+    <link rel="stylesheet" href="../../../assets/src/css/modalSacar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -13,37 +13,26 @@
 </head>
 
 <body>
-    <section>
-        <main id="main-modal" data-modal-sacar='main-modal'>
+        <div id="main-modal-sacar" data-modal-sacar='main-modal'>
+        
+                    <div class="container-de-dados">
 
-            <div>
-                <img src="../../../assets/src/img/barra-grana.png" alt="" width="100%" class="img-barra">
-            </div>
+                        <img class="img-servicos" src="../../../assets/src/img/icones-menu/sacar.png" alt="">
 
-            <section class="display-flex-modal">
+                        <h2 class="config-text-destaque">Qual valor você quer sacar?</h2>
 
-                <div class="display-um">
-                    <img class="img-servicos" src="../../../assets/src/img/icones-menu/sacar.png" alt="">
-                    <h2>Qual valor deseja sacar?</h2>
+                        <form>
+                            <input type="text" id="valor-a-enviar" data-modal-sacar="valor-a-enviar" placeholder="P. ex. 20,00">
+                        </form>
 
-                    <form>
-                        <input type="text" id="valor-a-enviar" data-modal-sacar="valor-a-enviar" placeholder="P. ex. 20,00">
-                    </form>
+           
+                        <button id="btn-de-confirmar" data-modal-sacar="btn-de-confirmar">Confirmar</button>
+                       
 
-                    <span class="resumo-dos-dados-a-enviar" data-modal-sacar="resumo-dos-dados-a-enviar">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, magni? Quo tempore amet atque
-                            laborum iste odio obcaecati distinctio iure minus nisi eveniet nihil laboriosam, animi harum
-                            officiis repudiandae! Asperiores!
-                        </p>
-                    </span>
+        
+                    </div>
 
-                    <button id="btn-de-confirmar" data-modal-sacar="btn-de-confirmar">Realizar saque</button>
-                    <span class="btn-de-desistir-tela-um" data-modal="btn-de-desistir">Desistir <i
-                            class="fas fa-sign-out"></i></span>
-                </div>
-            </section>
-        </main>
-    </section>
+        </div>
 </body>
 
 </html>

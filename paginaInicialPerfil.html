@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="./assets/src/css/configModalPix.css">
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -16,67 +15,70 @@
     
     <!-- Configurações dos Scripts JS -->
      <script type="module" src="app.mjs" defer></script>
-    <!-- <script type="module" src="./assets/src/js/recuperaUserLocalStorage.mjs" defer></script>
-    <script type="module" src="./assets/src/js/oparacoesBancarias.mjs" defer></script>
-    <script type="module" src="./assets/src/js/logicaDosModaisDoMenuPrincipal.mjs" defer></script> -->
 
     <!-- Configurações de CSS -->
-    <link rel="stylesheet" href="./assets/src/css/app.css">
+    <link rel="stylesheet" href="./assets/src/css/configDeEstilosPaginaInicialPerfil.css">
     
 </head>
 <body>
-    <main>
-        <section id="container-modal-menu"></section>
-        <section id="main-container-pagina-inicial">
-                <div class="box-perfil-logo">
-                    <img data-perfil = 'foto-user'  src="./assets/src/img/icon-usuario.png" alt="" >
-                    <img data-perfil="logo-inicial" src="./assets/src/img/MONZA.png" alt="">
-                </div>
+    
+    
+    <main id="main-pagina-inicial">
 
-                <div class="box-saudacao">
-                    <h2 class="saudacao-tempo-dia">Bom dia, <span data-perfil="nome-user"></span>Pedro</h2>
-                    <h3 data-perfil="data-sistema">26 de Dezembro, 2024</h3>
-                </div>
+        <section id="container-principal-funcoes-iniciais">
+                <span id="container-para-mostrar-menu"></span>
 
-                <div class="box-saldo">
+                <section>
 
-                    <div>
-                        <p>Seu dinheiro</p>
-                        <p data-perfil="saldo-user">R$ 00.00</p>
-                        <span data-perfil="email-user">@pix-nome-usuario</span>
+                    <div class="box-perfil-logo">
+                        <img data-perfil = 'foto-user'  src="./assets/src/img/icon-usuario.png" alt="" >
+                        <img data-perfil="logo-inicial" src="./assets/src/img/MONZA.png" alt="">
                     </div>
 
-                    <div>
-                        <img src="./assets/src/img/MONZA.png" alt="" width="50px">
-                        <img src="./assets/src/img/bb.png" alt="" width="50px">
-
-                        <p class="numbr-card-person">0000 0000 ... 
-                            <i class="fas fa-copy"></i>
-                        </p>
+                    <div class="box-saudacao">
+                        <p>Olá, Pedro César</p>
+                        <p>Bom dia.</p>
+                        <p data-perfil="data-sistema">26 de Dezembro, 2024</p>
                     </div>
-                   
-                </div>
+
+                    <div class="box-saldo">
+                        <div>
+                            <p data-perfil="saldo-user">R$ 00.00</p>
+                            <!-- <span data-perfil="email-user">@pix-nome-usuario</span> -->
+                        </div>
+
+                        <div class="card-container">
+                            <img src="./assets/src/img/MONZA.png" alt="" width="50px">
+                            <img src="./assets/src/img/bb.png" alt="" width="50px">
+
+                            <p class="numbr-card-person">0000 0000 ... 
+                                <i class="fas fa-copy"></i>
+                            </p>
+                        </div>
+                    
+                    </div>
+
+                </section>
                 
-        </section>
-
-        <section id="menu-main">
-            <div data-menu-main="saque" type=""><img src="./assets/src/img/icones-menu/sacar.png" alt="" width="20%"><p>sacar</p> <p></p></div>
-
-            <div data-menu-main="deposito"> <img src="./assets/src/img/icones-menu/depositar.png" alt="" width="20%"><p>depositar</p></div>
-
-            <div data-menu-main="pix"><img src="./assets/src/img/icones-menu/pix.png" alt="" width="20%"><p>fazer pix</p></div>
-
-            <div data-menu-main="pagar"><img src="./assets/src/img/icones-menu/boletos.png" alt="" width="20%"><p>pagar contas</p></div>
-
-            <div data-menu-main="extrato"><img src="./assets/src/img/icones-menu/extrato.png" alt="" width="20%"><p>extrato</p></div>
-
-            <div data-menu-main="mais"><img src="./assets/src/img/icones-menu/mais.png" alt="" width="20%"><p>mais...</p></div>
-        </section>
-
-        <section id="atendimento">
-            <h5>atendimento <i class="fas fa-comments"></i></h5>
-        </section>
+                <section id="menu-principal-pagina-inicial">
+                    <div data-menu-main="saque" type=""><img src="./assets/src/img/icones-menu/sacar.png" alt="" width="20%"><p>sacar</p> <p></p></div>
         
+                    <div data-menu-main="deposito"> <img src="./assets/src/img/icones-menu/depositar.png" alt="" width="20%"><p>depositar</p></div>
+        
+                    <div data-menu-main="pix"><img src="./assets/src/img/icones-menu/pix.png" alt="" width="20%"><p>fazer pix</p></div>
+        
+                    <div data-menu-main="pagar"><img src="./assets/src/img/icones-menu/boletos.png" alt="" width="20%"><p>pagar contas</p></div>
+        
+                    <div data-menu-main="extrato"><img src="./assets/src/img/icones-menu/extrato.png" alt="" width="20%"><p>extrato</p></div>
+        
+                    <div data-menu-main="mais"><img src="./assets/src/img/icones-menu/mais.png" alt="" width="20%"><p>mais...</p></div>
+                </section>
+
+                <section id="atendimento">
+                    <h5>Precisa de ajuda? <i class="fas fa-comments"></i></h5>
+                </section>
+
+        </section>
     </main>
 </body>
 </html>

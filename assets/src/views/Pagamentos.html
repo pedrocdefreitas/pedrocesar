@@ -1,49 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">  
-    </head>
 
-    <body>
-        <section>
-                <main id="main-modal" data-modal='main-modal'>
-                    <div>
-                        <img src="../../../assets/src/img/barra-grana.png" alt="" width="100%" class="img-barra">
-                    </div>
-                        <section class="display-flex-modal">
-                            
-                            <div class="display-um">
-                                <img  class="img-servicos" src="../../../assets/src/img/icones-menu/QR.png" alt="">
-                                <h2>Toque para digitar o QR ou código de barras ou digite o código de barras.</h2>
-            
-                                <form>
-                                    <input type="text" id="cod-de-barras" data-modal-pagamento="cod-de-barras" placeholder="P. ex. 000.0000.0000-0000 ...">
-            
-                                    <!-- <nav>
-                                        <li data-menu-pix="pix-cadastrados">Pix já cadastrados <i class="fas fa-sign-out"></i></li>
-                                        <li data-menu-pix="pix-ja-realizados">Pix realizados <i class="fas fa-sign-out"></i></li>
-                                        <li data-menu-pix="pix-recebidos">Pix recebidos <i class="fas fa-sign-out"></i></li>
-                                    </nav> -->
-            
-                                    <h2>Valor do boleto</h2>
-                                    <input type="text" class="input-valor-a-pagar" data-modal-pagamento="input-valor-a-pagar" placeholder="P. ex. 20,00">
+<head>
+    <link rel="stylesheet" href="../../../assets/src/css/modalPagamento.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
 
-                                    <h2>Data pagamento</h2>
-                                    <input type="date" class="data-vencimento-pagamento-boleto" data-modal-pagamento="data-pagamento" placeholder="P. ex. 25/12/2024"> 
-                                </form>
-            
-                                <span class="resumo-dos-dados-a-enviar" data-modal-pagamento="resumo-dos-dados-a-enviar"></span>
-            
-                                <button class="btn-de-confirmar" data-modal-pagamento="btn-de-confirmar">Pagar</button>
-                                <span class="btn-de-desistir-tela-um" data-modal="btn-de-desistir">Desistir <i class="fas fa-sign-out"></i></span>
-                            </div>
+<body>
+    <section id="main-modal-pagamento">
 
-                        </section>
-                </main>
-        </section>
-    </body>
+            <img class="img-servicos" src="../../../assets/src/img/icones-menu/QR.png" alt="">
+            <h2 class="config-text-destaque-min">Toque para digitar o QR ou código de barras ou digite o código de barras.</h2>
+            <form>
+                <input type="text" id="cod-de-barras" data-modal-pagamento="cod-de-barras"
+                    placeholder="P. ex. 000.0000.0000-0000 ...">
+
+                <h2 class="config-text-destaque">Valor do boleto</h2>
+                <input type="text" id="input-valor-a-pagar" data-modal-pagamento="input-valor-a-pagar"
+                    placeholder="P. ex. 20,00">
+
+                <h2 class="config-text-destaque">Data pagamento</h2>
+
+                <input type="date" id="data-vencimento-pagamento-boleto" data-modal-pagamento="data-pagamento"
+                    placeholder="P. ex. 25/12/2024">
+            </form>
+            <button id="btn-de-confirmar" data-modal-pagamento="btn-de-confirmar">Pagar</button>
+        </div>
+
+    </section>
+</body>
+
 </html>

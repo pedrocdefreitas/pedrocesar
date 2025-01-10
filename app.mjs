@@ -1,10 +1,114 @@
-let historicoDeposito = [];
-let SaldoInicial;
+let SaldoInicial = atualizaSaldo();
 
-// window.addEventListener("DOMContentLoaded", function (event) {
-//     return true
-// });
+function atualizaSaldo() {
+  let valores = [];
+  let historicoDeDepositos =
+    JSON.parse(localStorage.getItem("historicoDeposito")) || [];
 
+  let displaySaldo = document.querySelector('[data-perfil="saldo-user"]');
+
+  historicoDeDepositos.forEach((depositos) => {
+    valores.push(depositos.valorDepositado);
+  });
+
+  let somaSaldo = valores.reduce(function (acumulador, valorAtual) {
+    return acumulador + valorAtual;
+  }, 0);
+
+  displaySaldo.innerHTML = "R$ " + somaSaldo.toFixed(2);
+
+  return somaSaldo;
+}
+
+function totalOperacaoDebitos() {  
+  let saquesRealizados = JSON.parse(localStorage.getItem('historicoSaque'))
+  let pixRealizados = JSON.parse(localStorage.getItem('historicoPix'))
+  let pagamentosRealizados = JSON.parse(localStorage.getItem('historicoPagamento'))
+
+  let somaSaque = 0
+  let somaPix = 0
+  let somaPagamentos = 0
+
+  saquesRealizados.forEach( (saques)=> {
+    somaSaque += parseFloat(saques.valorSolicitado)
+  })
+
+  pixRealizados.forEach( pixs => {
+    somaPix += parseFloat(pixs.valor)
+  })
+
+  pagamentosRealizados.forEach( pagamentos => {
+    somaPagamentos += parseFloat( pagamentos.valorDoBoleto )
+    
+  })
+
+  return{
+    'totalPixRealizado': somaPix.toFixed(2),
+    'totalSaquesRealizado': somaSaque.toFixed(2),
+    'totalPagamentos': somaPagamentos.toFixed(2)
+  }
+  
+}
+
+console.log(totalOperacaoDebitos())
+
+function exibeCard() {
+
+  let card = document.querySelector(".card-container");
+
+  card.addEventListener("click", function () {
+
+    card.classList.toggle('show')
+    
+    // if( card.classList.contains('hiden')){
+    //   card.classList.remove('hiden')
+    //   card.classList.add('show')
+    // }else{
+    //   card.classList.remove('show')
+    //   card.classList.add('hiden')
+    // }
+  }
+
+)}
+
+let geraExtrato = function (tipoDeOperacao, valorOperacao) {
+  let operacao = {
+    data: new Date(),
+    descricao: tipoDeOperacao,
+    valor: valorOperacao,
+  };
+
+  let historicoExtrato =
+    JSON.parse(localStorage.getItem("historicoExtrato")) || [];
+  historicoExtrato.push(operacao);
+  localStorage.setItem("historicoExtrato", JSON.stringify(historicoExtrato));
+
+  console.log("Extrato gerado");
+};
+
+let extratoNaTela = function () {
+  let i;
+  let movimentacoes = JSON.parse(localStorage.getItem("historicoExtrato"));
+  let tbody = document.querySelector("#tbody");
+
+  for (i = 0; i < movimentacoes.length; i++) {
+    let th = document.createElement("th");
+    let td = document.createElement("td");
+    let tr = document.createElement("tr");
+
+    tr.append(th);
+
+    th.setAttribute("scope", "row");
+
+    tr.innerHTML += `
+      <td>${movimentacoes[i].data}</td>
+      <td>${movimentacoes[i].descricao}</td>
+      <td>${movimentacoes[i].valor}</td>
+      `;
+
+    tbody.append(tr);
+  }
+};
 
 let capturaLinksMenuPrincipal = function () {
   //Função adicionando evento de click nos botões e retornando o link para suas respectivas.
@@ -49,7 +153,7 @@ let capturaLinksMenuPrincipal = function () {
       let resultado = Object.values(menu).forEach((obj) => {
         if (obj.idName === attr) {
           let link = obj.linkMenu;
-          let idName = obj.idName
+          let idName = obj.idName;
           htmlRequest(link, idName);
         }
       });
@@ -59,281 +163,324 @@ let capturaLinksMenuPrincipal = function () {
 
 let htmlRequest = function (linkPaginaMenu, idName) {
   //funcão para fazer a requisição das paginas dos links do menu.
-  let containerMenu = document.querySelector("#container-modal-menu");
+  let containerMenu = document.querySelector("#container-para-mostrar-menu");
   let http = new XMLHttpRequest();
-  
+
   http.open("GET", linkPaginaMenu, true);
   http.responseType = "text";
 
   http.onload = function () {
-
     if (http.status == 200 || http.status == 304) {
       containerMenu.innerHTML = http.responseText;
 
-      if(idName === 'saque')    funcaoSaque()
-      if(idName === 'deposito') funcaoDeposito()
-      if(idName === 'pix')      funcaoPix()
-      if(idName === 'pagar') funcaoPagamento()
+      if (idName === "saque") funcaoSaque();
+      if (idName === "deposito") funcaoDeposito();
+      if (idName === "pix") funcaoPix();
+      if (idName === "pagar") funcaoPagamento();
+      if (idName === "extrato") extratoNaTela();
       //É necessário esse tempo para que o elemento surga na tela, para então ocorrer a animação de descer.
-      setTimeout( function () {  
-        containerMenu.style.top = '0px'
-      }, 100)
-      acaoDoBotaoDesistir(containerMenu)
+      setTimeout(function () {
+        containerMenu.style.marginTop = "0px";
+      }, 100);
+
+      // acaoDoBotaoDesistir(containerMenu)
     }
   };
 
-  
   http.send();
-
 };
 
-let acaoDoBotaoDesistir = function( containerMenu ){
+let acaoDoBotaoDesistir = function (containerMenu) {
   //Função para o botão de desistir ( está funcionando em todas as Views... )
-  let botaoDesistir = document.querySelector('.btn-de-desistir-tela-um')
-  botaoDesistir.addEventListener('click', function(){
-    console.log('desisti')
+  // let botaoDesistir = document.querySelector('.btn-de-desistir-tela-um')
+  // botaoDesistir.addEventListener('click', function(){
+  //   console.log('desisti')
+  //   //É necessário esse tempo para que o elemento surga na tela, para então ocorrer a animação de subir.
+  //   setTimeout( function () {
+  //     containerMenu.style.top = '-100vh'
+  //   }, 100)
+  // })
+};
 
-    //É necessário esse tempo para que o elemento surga na tela, para então ocorrer a animação de subir.
-    setTimeout( function () {  
-      containerMenu.style.top = '-100vh'
-    }, 100)
-  })
-}
+let saudacaoInicial = function () {
+  let textoDataPorExtenso = document.querySelector(
+    '[data-perfil="data-sistema"]'
+  );
+  let now = new Date();
+  let dayName = new Array(
+    "Domingo",
+    "Segunda",
+    "Terça",
+    "Quarta",
+    "Quinta",
+    "Sexta",
+    "Sábado"
+  );
+  let monName = new Array(
+    "janeiro",
+    "fevereiro",
+    "março",
+    "abril",
+    "maio",
+    "junho",
+    "agosto",
+    "outubro",
+    "novembro",
+    "dezembro"
+  );
+  textoDataPorExtenso.textContent =
+    "" +
+    dayName[now.getDay()] +
+    ", " +
+    now.getDate() +
+    " de " +
+    monName[now.getMonth()] +
+    " de " +
+    now.getFullYear() +
+    ".";
+};
 
-let saudacaoInicial = function(){
-  let textoDataPorExtenso = document.querySelector('[data-perfil="data-sistema"]')
-  let now = new Date
-  let dayName = new Array ("Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado")
-  let monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro")
-  textoDataPorExtenso.textContent = "" + dayName[now.getDay() ] + ", " + now.getDate () + " de " + monName [now.getMonth() ]   +  " de "  +     now.getFullYear () + "."
-}
+let funcaoSaque = function () {
+  console.log("Abriu janela de saque...");
 
-let funcaoSaque = function(){
+  let inputSaque = document.querySelector(
+    '[data-modal-sacar="valor-a-enviar"]'
+  );
+  let btnDeConfirmarSaque = document.querySelector(
+    '[data-modal-sacar="btn-de-confirmar"]'
+  );
 
-    let elementosSaque = document.querySelectorAll('[data-modal-sacar]')
-    elementosSaque[3].addEventListener('keyup', function () {
-    let valorDigitado = elementosSaque[1].value 
-    let saldoAnterior = SaldoInicial
+  btnDeConfirmarSaque.addEventListener("click", function () {
+    let valorDigitado = inputSaque.value;
 
-    if(isNaN( valorDigitado )){ 
-      historicoOperacoes.push("Tentativa de saque não realizada, valor incorreto.")
-      throw new Error('Digite o valor corretamente.')}
+    if (isNaN(valorDigitado)) {
+      throw new Error("Digite o valor corretamente.");
+    }
 
-    if( SaldoInicial < valorDigitado){ 
-      historicoOperacoes.push("Tentativa de saque não realizada, Saldo insuficiente!")
-      throw new Error('Saldo insuficiente..' + SaldoInicial)}
+    if (SaldoInicial < valorDigitado) {
+      throw new Error("Saldo insuficiente.." + SaldoInicial);
+    }
 
-    let saldofinal = SaldoInicial -= valorDigitado
+    console.log(valorDigitado);
 
     let dadosDoSaque = {
-      "idClinte": '123456',
-      "tipo": "saque",
-      "modo": "débito",
-      "taxAdm": '',
-      "saldoAnterior": saldoAnterior,
-      "valorSolicitado": valorDigitado,
-      "dataOperacao": '04/01/2025',
-      "descricao": 'Saque efetuado ATM',
-      "saldoAtualizado": saldofinal
+      idClinte: "123456",
+      tipo: "saque",
+      modo: "débito",
+      taxAdm: "",
+      saldoAnterior: "saldoAnterior",
+      valorSolicitado: valorDigitado,
+      dataOperacao: new Date(),
+      descricao: "Saque efetuado ATM",
+      saldoAtualizado: "saldofinal",
+    };
+
+    let confirmaSaque_is = confirm("Deseja confirmar o saque ?");
+
+    if (confirmaSaque_is == true) {
+      let historicoSaque =
+        JSON.parse(localStorage.getItem("historicoSaque")) || [];
+      historicoSaque.push(dadosDoSaque);
+      localStorage.setItem("historicoSaque", JSON.stringify(historicoSaque));
+      geraExtrato(dadosDoSaque.tipo, dadosDoSaque.valorSolicitado);
+
+      setTimeout(() => {
+        alert("Deposito realizado com sucesso!");
+        window.location = "./paginaInicialPerfil.html";
+      }, 1500);
+      return;
     }
 
-    historicoOperacoes.push(dadosDoSaque)
-    console.log( historicoOperacoes )
+    alert("Operação cancelada");
+  });
+};
 
-  })
+let funcaoDeposito = function () {
+  let valorDoDeposito = document.querySelector(
+    '[data-modal-deposito="valor-a-enviar"]'
+  );
+  let btnConfirmaDeposito = document.querySelector(
+    '[data-modal-deposito="btn-de-confirmar"]'
+  );
 
-}
+  btnConfirmaDeposito.addEventListener("click", function () {
+    let valorParaDepositar = parseFloat(valorDoDeposito.value);
 
-let funcaoDeposito = function(){
-    let elemento = document.querySelectorAll('[data-modal-deposito]')
-    let saldoAnterior = SaldoInicial
+    if (isNaN(valorParaDepositar)) {
+      throw new Error("Digite o valor corretamente.");
+    }
 
-    elemento[2].addEventListener('click', function(){
+    let dadosDoDeposito = {
+      idClinte: "123456",
+      tipo: "deposito",
+      modo: "crédito",
+      taxAdm: "",
+      valorDepositado: valorParaDepositar,
+      dataOperacao: new Date(),
+      descricao: "Deposito efetuado no ATM",
+    };
 
-      let valorParaDepositar = parseFloat(elemento[0].value)
+    let confirmaDeposito_is = confirm("Deseja confirmar esse deposito?");
 
-        if(isNaN( valorParaDepositar )){ 
-            throw new Error('Digite o valor corretamente.')}
+    if (confirmaDeposito_is == true) {
+      let historicoDeposito =
+        JSON.parse(localStorage.getItem("historicoDeposito")) || [];
 
-       let deposito = SaldoInicial += valorParaDepositar
+      historicoDeposito.push(dadosDoDeposito);
 
-       let dadosDoDeposito = {
-        "idClinte": '123456',
-        "tipo": "deposito",
-        "modo": "crédito",
-        "taxAdm": '',
-        "valorDepositado": valorParaDepositar,
-        "dataOperacao": '04/01/2025',
-        "descricao": 'Deposito efetuado no ATM',
-      }
+      localStorage.setItem(
+        "historicoDeposito",
+        JSON.stringify(historicoDeposito)
+      );
+      geraExtrato(dadosDoDeposito.tipo, dadosDoDeposito.valorDepositado);
 
-      historicoDeposito.push(dadosDoDeposito)
-      localStorage.setItem('dados_do_deposito', JSON.stringify(historicoDeposito));
-      console.log('salvo no localstorage.')
-  })
-  
-}
+      setTimeout(() => {
+        alert("Deposito realizado com sucesso!");
+        window.location = "./paginaInicialPerfil.html";
+      }, 1500);
 
-let funcaoPix = function(){
+      return;
+    }
 
-  let elementosPix = document.querySelectorAll('[data-modal-pix]')
+    alert("Operação cancelada");
+  });
+};
+
+let funcaoPix = function () {
+  let destinatario = document.querySelector(
+    '[data-modal-pix="destinatario-pix"]'
+  );
   let tipoPix;
-  let botaoConfirma = elementosPix[3]
-  let pixDestinatario = elementosPix[0]
+  let botaoConfirma = document.querySelector(
+    '[data-modal-pix="btn-de-confirmar"]'
+  );
+  let valorAEnviar = document.querySelector(
+    '[data-modal-pix="input-valor-a-enviar"]'
+  );
 
-  pixDestinatario.addEventListener('keyup', function(){
-
-
-    if(pixDestinatario.value.includes('@')){
-     console.log('Pix do tipo email.')
-     tipoPix = "email."
+  destinatario.addEventListener("keyup", function () {
+    if (pixDestinatario.value.includes("@")) {
+      console.log("Pix do tipo email.");
+      tipoPix = "email.";
     }
 
-    console.log(pixDestinatario.value.length)
-    
-    if(pixDestinatario.value.length == '12'){
-     console.log('Pix do tipo celular.')
-     tipoPix = 'celular'
+    console.log(destinatario.value.length);
+
+    if (destinatario.value.length == "12") {
+      console.log("Pix do tipo celular.");
+      tipoPix = "celular";
     }
 
-    if(pixDestinatario.value.length == '14'){
-      console.log('Pix do tipo cnpj.')
-      tipoPix = 'cnpj'
+    if (destinatario.value.length == "14") {
+      console.log("Pix do tipo cnpj.");
+      tipoPix = "cnpj";
     }
 
-    if(pixDestinatario.value.length == '11'){
-      console.log('Pix do tipo cpf.')
-      tipoPix = 'cpf'
+    if (destinatario.value.length == "11") {
+      console.log("Pix do tipo cpf.");
+      tipoPix = "cpf";
+    }
+  });
+
+  botaoConfirma.addEventListener("click", function () {
+    if (destinatario.value == "") {
+      console.log("O campo de remetente não pode ser em branco ");
+      return;
     }
 
-  })  
-
-
-  botaoConfirma.addEventListener('click', function () {  
-
-    if(pixDestinatario.value == ""){
-      console.log('O campo de remetente não pode ser em branco ')
-      return
-    }
-
-    if(elementosPix[1].value == ""){
-      console.log('O campo de valor a enviar, não pode ser em branco ')
-      return
+    if (valorAEnviar.value == "") {
+      console.log("O campo de valor a enviar, não pode ser em branco ");
+      return;
     }
 
     let dadosPix = {
-      "idClinte": '123456',
-      'destinatario': pixDestinatario.value,
-      'tipo de pix': tipoPix || "tipo não encontrado",
-      'remetente': 'Pedro',
-      "valor": elementosPix[1].value,
-      "data": new Date(),
-      "descrição": "Envio",
-      "tipo": 'pix',
-      "tipo operacao": 'debito'
+      idClinte: "123456",
+      destinatario: destinatario.value,
+      "tipo de pix": tipoPix || "tipo não encontrado",
+      remetente: "Pedro",
+      valor: valorAEnviar.value,
+      data: new Date(),
+      descrição: "Envio",
+      tipo: "pix",
+      "tipo operacao": "debito",
+    };
+
+    let confirmaPix_is = confirm(
+      `Deseja confirmar o pix no valor de R$ ${valorAEnviar.value} para ${destinatario.value}`
+    );
+
+    if (confirmaPix_is == true) {
+      let historicoPix = JSON.parse(localStorage.getItem("historicoPix")) || [];
+      historicoPix.push(dadosPix);
+      localStorage.setItem("historicoPix", JSON.stringify(historicoPix));
+      geraExtrato(dadosPix.tipo, dadosPix.valor);
+
+      setTimeout(() => {
+        alert("Pix enviado com sucesso!");
+        window.location = "./paginaInicialPerfil.html";
+      }, 1500);
+      return;
     }
 
-    console.log( dadosPix )    
-  })
+    alert("Operação cancelada");
+  });
+};
 
-}
-
-let funcaoPagamento = function(){
-  let elementosPagamentos = document.querySelectorAll('[data-modal-pagamento]')
+let funcaoPagamento = function () {
+  let elementosPagamentos = document.querySelectorAll("[data-modal-pagamento]");
 
   let dadosDoCodigoDeBarras = {
-    "idClinte": '123456',
-    'beneficiario': "Companhia de energia do estado de pernambuco",
-    'data-documento': '25/12/2024',
-    'n-do-documento': 123456785,
-    'vencimento': '12/12/2024',
-    'data-do-pagamento': new Date()
-  }
-  
-  elementosPagamentos[4].addEventListener('click', function(){
-    let codBarras = elementosPagamentos[0].value
-    let vencimentoBoleto = elementosPagamentos[2].value
-    let valorBoleto = elementosPagamentos[1].value
+    idClinte: "123456",
+    beneficiario: "Companhia de energia do estado de pernambuco",
+    "data-documento": "25/12/2024",
+    "n-do-documento": 123456785,
+    vencimento: "12/12/2024",
+    "data-do-pagamento": new Date(),
+  };
 
-    let dadosBoleto = {
-      "idClinte": '123456',
-      'codigo-de-barras': codBarras,
-      'pagamento-data-boleto': vencimentoBoleto,
-      'valor-do-boleto': valorBoleto,
+  document
+    .querySelector('[data-modal-pagamento="btn-de-confirmar"]')
+    .addEventListener("click", function () {
+      let codBarras = elementosPagamentos[0].value;
+      let vencimentoBoleto = elementosPagamentos[2].value;
+      let valorBoleto = elementosPagamentos[1].value;
 
-        dadosDoBoleto: dadosDoCodigoDeBarras
-    }
+      let dadosBoleto = {
+        idClinte: "123456",
+        "codigo-de-barras": codBarras,
+        "pagamento-data-boleto": vencimentoBoleto,
+        "valorDoBoleto": valorBoleto,
 
-    console.log(dadosBoleto)
-  })
+        dadosDoBoleto: dadosDoCodigoDeBarras,
+      };
 
-}
+      let confirmaPagamento_is = confirm(
+        `Deseja confirmar o PAGAMENTO no valor de R$ ${valorBoleto} ?`
+      );
+
+      if (confirmaPagamento_is == true) {
+        let historicoPagamento =
+          JSON.parse(localStorage.getItem("historicoPagamento")) || [];
+        historicoPagamento.push(dadosBoleto);
+        localStorage.setItem(
+          "historicoPagamento",
+          JSON.stringify(historicoPagamento)
+        );
+        geraExtrato("Pagamento de título", valorBoleto);
+
+        setTimeout(() => {
+          alert("Pix enviado com sucesso!");
+          window.location = "./paginaInicialPerfil.html";
+        }, 1500);
+        return;
+      }
+
+      alert("Operação cancelada");
+    });
+};
 
 //Inicio das funções - NÃO APAGUE.
-
-saudacaoInicial()
+console.log('Saldo inicial: R$ ' + SaldoInicial);
+exibeCard();
+saudacaoInicial();
 capturaLinksMenuPrincipal();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function OperacaoBancaria(SaldoInicial, idCliente, DataOperacao, TipoOperacao, Descricao, Tarifa, Destinatario, ValorBruto, ValorNominal ){ 
-
-//     let saldoInicial = SaldoInicial
-//     //Cadastro base para operações bancárias.
-
-//     this.IdCliente    = idCliente
-//     this.DataOperacao = DataOperacao
-//     this.TipoOperacao = TipoOperacao
-//     this.Descricao    = Descricao
-//     this.Tarifa       = Tarifa
-//     this.Destinatario = Destinatario
-//     this.ValorBruto   = ValorBruto
-//     this.ValorNominal = ValorNominal
-
-
-//     this.Saque = function (ValorDoSaque, taxaDeSaque) {
-
-//       if( saldoInicial > ValorDoSaque) {
-//         return saldoInicial -= saldoInicial - ValorDoSaque
-//       }
-
-//       throw new Error('Sem saldo suficiente, Realize um deposito')
-//       //Ofereça o link para a tela do deposito.
-//     }
-
-//     // this.ResumoCliente = function(){}
-//     // this.Pix = function (ValorDoPix){
-//     //   if( SaldoInicial > ValorDoPix){
-//     //     return SaldoInicial -= ValorDoPix
-//     //   } 
-//     //   throw new Error('Sem saldo suficiente, Realize um deposito')
-//     // }
-
-//     // this.Deposito = function (ValorDeposito) {
-//     //   return SaldoInicial += ValorDeposito
-//     // }
-
-//     // this.Pagamento = function(){}
-
-//     // this.Extrato = function () {}
-
-//     // this.AtualizaSaldo = function( ){}
-
-//   }

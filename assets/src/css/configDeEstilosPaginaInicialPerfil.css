@@ -2,46 +2,50 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: 1s;
+    transition: .3s;
     font-family: "Open Sans", serif;
+
 }
 
-main{
+:root{
+    --clr-itp-primary: #78adba;
+    --clr-itp-1: #82b3bf; 
+    --clr-itp-2: #dde2e2; 
+    --clr-itp-3: #247698; 
+    --clr-itp-4: #1b4367; 
+    --clr-itp-5: #4995ad; 
+    --clr-itp-6: #49758c; 
+    --clr-itp-7: #919479; 
+    --clr-itp-8: #897c52; 
+    --clr-itp-9: #b4dce0; 
+    --clr-itp-10: #dc7c7c; 
+}
+
+#container-para-mostrar-menu{
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    min-height: 90vh;
+    top: 0;
+    margin-left: -25px;
+    margin-top: -100vh;
+}
+
+#container-principal-funcoes-iniciais{
     box-sizing: border-box;
     margin: 0 auto;
-    max-width: 450px;
-    position: relative;
-    border-radius: 25px;
-    overflow: auto;
+    max-width: 550px;
+    overflow: hidden;
     background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+    padding: 25px;
+    min-height: 100vh;
+    position: relative;
 }
 
-#main-container-pagina-inicial{
-    box-sizing: border-box;
-    padding: 15px;
-}
-
-#main-container-pagina-inicial h2, h3, p{
-    color: #dcf4ff !important;
-    display: block;
-    width: 100%;
-}
-
-#main-container-pagina-inicial  .box-saudacao{
-    box-sizing: border-box;
-    padding: 0 25px;
-    text-align: left;
-    font-size: 1.5rem;
-}
-
-.blur{
-    filter: blur(5px);
-}
-
-
-#tag-saldo-index{
-    box-sizing: border-box;
-    text-align: center;
+.box-saudacao p{
+    padding-left: 19px;
+    font-size: 1.3rem;
+    color: #f0feff;
 }
 
 .box-perfil-logo{
@@ -60,34 +64,37 @@ main{
     width: 40%;
 }
 
-
-
 .box-saldo{
     box-sizing: border-box;
-    display: flex;
-    justify-content: space-around;
     height: 190px;
     margin-top: 25px;
+    color: #f0feff;
 }
 
 .box-saldo div{
     box-sizing: border-box;
-    width: 48%;
+    width: 60%;
     height: 150px;
     border-radius: 15px;
     align-items: center;
     justify-content: center;
 }
 
+[data-perfil="saldo-user"]{
+    font-weight: 700;
+    font-size: 2rem;
+}
+
 .box-saldo div:nth-child(1){
     box-sizing: border-box;
     text-align: left;
     padding-left: 20px;
-    font-size: 1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
 .box-saldo div:nth-child(2){
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: space-between;
     align-items: start;
@@ -95,19 +102,24 @@ main{
     padding: 25px;
     background: linear-gradient(304deg, rgb(103, 255, 166) 0%, rgb(89, 168, 247) 49%, rgb(44, 233, 247) 100%);
 
-    
+    width: 300px;
+    top: 300px;
+    right: 0;
+   
+    filter: drop-shadow(2px 6px 8px rgba(0, 0, 0, 0.432));
+    cursor: pointer;
+
+    margin-right: -250px;
 }
 
-
-[data-perfil="saldo-user"]{
-    font-size: 2rem;
-    font-weight: 600;
+.show{
+    margin-right: 15px !important;
 }
 
-[data-perfil="email-user"]{
-    font-size: .9rem;
+/* .hiden{
+    margin-right: -250px;
+} */
 
-}
 
 .numbr-card-person{
     box-sizing: border-box;
@@ -115,45 +127,42 @@ main{
     color: aliceblue;
     bottom: 0;
     margin-bottom: 25px;
-}
+}   
 
-
-
-#menu-main {
+#menu-principal-pagina-inicial {
     box-sizing: border-box;
 }
 
-#menu-main img{
+#menu-principal-pagina-inicial img{
     display: block;
     width: 10%;
     margin-right: 25px;
 }
 
-
-#menu-main div{
+#menu-principal-pagina-inicial div{
     box-sizing: border-box;
-    width: 95%;
+    width: 100%;
     border-radius: 3px;
     margin: 0 auto;
     padding: 15px;
-    height: 90px;
-    background: #02d6d3;
+    height: 65px;
+    background-color: #00d2ff;
     cursor: pointer;
     margin-bottom: 15px;
     display: flex;
     align-items: center;
 }
 
-#menu-main div:hover{
+#menu-principal-pagina-inicial div:hover{
     background: #b5f5f4;
     transition: .2s;
+    color: black;
 }
 
-#menu-main div p{
+#menu-principal-pagina-inicial div p{
     text-transform: uppercase;
-    font-size: 1.5rem;
-    font-weight: 600;
     pointer-events: none;
+    font-size: 1.2rem;
 }
 
 #atendimento{
@@ -162,18 +171,19 @@ main{
     margin: 0 auto;
     margin-top: 90px;
     height: 60px;
-    font-size: 1.5rem;
     text-align: center;
-    background: #034e4d;
     cursor: pointer;
-    color: #ffffff;
-    font-weight: normal !important;
     line-height: 250%;
+}
+
+#atendimento h5, i{ 
+    color: azure;
 }
 
 #container-modal-menu{
     position: absolute;
     top: -100vh;
+    z-index: 100;
 }
 
 /* =================================================== */
