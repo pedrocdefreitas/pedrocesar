@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONZA BANCK - CONTA FÁCIL PARA APOSENTADOS E PENSIONISTAS.</title>
-    <link rel="shortcut icon" type="image/jpg" href="./assets/src/img/monza-favico.png"/>
+    <link rel="shortcut icon" type="image/jpg" href="./assets/src/img/moeda.png"/>
   
     <!-- Importes do Google fontes e FontWasome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,38 +12,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css">
     
     <!-- Configurações dos Scripts JS -->
      <script type="module" src="app.mjs" defer></script>
 
     <!-- Configurações de CSS -->
     <link rel="stylesheet" href="./assets/src/css/configDeEstilosPaginaInicialPerfil.css">
+
+    <script>    
+        setTimeout( function preLoad(){
+            document.querySelector('#pre-load').style.display = 'none'
+            document.querySelector('#container-principal-funcoes-iniciais').style.display = 'block'
+        }, 500)
+
+    </script>
     
 </head>
-<body>
-    
-    
+
+<body onload="preLoad()">
+
     <main id="main-pagina-inicial">
 
-        <section id="container-principal-funcoes-iniciais">
+        <article id="pre-load">
+            <span class="clicle"></span>
+            <p>Estou preparando tudo pra você...</p>
+
+            <img src="./assets/src/img/new-logo.png" alt="" width="50%">
+        </article>
+
+        <!-- <article id="mensagensInformativas">Saldo realizado com sucesso</article> -->
+        <section id="container-principal-funcoes-iniciais" style="display: none;">
+            <span id="bg-container-top-informes"></span>
                 <span id="container-para-mostrar-menu"></span>
 
                 <section>
 
                     <div class="box-perfil-logo">
-                        <img data-perfil = 'foto-user'  src="./assets/src/img/icon-usuario.png" alt="" >
-                        <img data-perfil="logo-inicial" src="./assets/src/img/MONZA.png" alt="">
+                        <img data-perfil = 'foto-user'  src="./assets/src/img/icon-usuario.png" alt="imagem-avatar-do-usuario" >
                     </div>
 
                     <div class="box-saudacao">
-                        <p>Olá, Pedro César</p>
-                        <p>Bom dia.</p>
-                        <p data-perfil="data-sistema">26 de Dezembro, 2024</p>
+                       
+                        
+                        <div class="tag-45875df58745">
+                            <p data-perfil="saudacao" ></p>
+                            <p data-perfil="nome"></p>
+                            
+                        </div>
+
+                        <div> 
+                          
+                            <p data-perfil="conta-usuario"></p>
+                        </div>
+                        
                     </div>
 
                     <div class="box-saldo">
                         <div>
-                            <p data-perfil="saldo-user">R$ 00.00</p>
+                            <p data-perfil="saldo-user">00.00</p>
                             <!-- <span data-perfil="email-user">@pix-nome-usuario</span> -->
                         </div>
 
@@ -61,7 +88,7 @@
                 </section>
                 
                 <section id="menu-principal-pagina-inicial">
-                    <div data-menu-main="saque" type=""><img src="./assets/src/img/icones-menu/sacar.png" alt="" width="20%"><p>sacar</p> <p></p></div>
+                    <div data-menu-main="saque" type=""><img src="./assets/src/img/icones-menu/sacar.png" alt="" width="20%"><p>sacar</p></div>
         
                     <div data-menu-main="deposito"> <img src="./assets/src/img/icones-menu/depositar.png" alt="" width="20%"><p>depositar</p></div>
         
@@ -74,8 +101,20 @@
                     <div data-menu-main="mais"><img src="./assets/src/img/icones-menu/mais.png" alt="" width="20%"><p>mais...</p></div>
                 </section>
 
-                <section id="atendimento">
+                <!-- <section id="atendimento">
                     <h5>Precisa de ajuda? <i class="fas fa-comments"></i></h5>
+                </section> -->
+
+                <section id="quemSouEu">
+                    <img src="./assets/src/img/foto-perfil.png" alt="" width="30%">
+                    <p>Pedro C. de Freitas</p>
+                    <p>Desenvolvedor Web</p>
+
+                   
+                        <img class="link" src="./assets/src/img/git.png" alt="" >
+                        <img class="link" src="./assets/src/img/in.png" alt="" >
+               
+                    <!-- <p data-perfil="data-sistema" class="data-inicial">26 de Dezembro, 2024</p> -->
                 </section>
 
         </section>

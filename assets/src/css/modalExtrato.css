@@ -21,13 +21,15 @@
 #main-modal-extrato{
     box-sizing: border-box;
     width: 100%;
-    min-height: 90vh;
+    height: 100vh;
     border-radius: 0px 0px 15px 15px;
     padding: 25px;
     background: rgb(70,154,238);
     background: linear-gradient(139deg, rgba(70,154,238,1) 0%, rgba(172,227,255,1) 69%, rgba(82,99,137,1) 100%);
     text-align: center;
     background-size: 150%;
+    overflow: scroll;
+
 }
 
 #config-tab{
@@ -38,6 +40,8 @@
     margin: 0 auto;
     text-align: center;
     color: aliceblue;
+    
+   
 }
 
 #config-tab th{
@@ -46,4 +50,7 @@
 
 #config-tab td{
     padding: 8px;
+    border-bottom: #dde2e2 1px solid;
+    margin: 15px;
+
 }

@@ -1,0 +1,112 @@
+*{
+    margin: 0; padding: 0; box-sizing: border-box; font-family: "Open Sans", serif;
+}
+
+#container-principal-cria-conta{
+    max-width: 500px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    background: rgb(36,118,152);
+    background: linear-gradient(193deg, rgba(36,118,152,1) 0%, rgb(155, 212, 226) 100%);
+    background-size: 500% 500%;
+    animation: bgAnimacao infinite ease-in-out 3s;
+}
+
+@keyframes bgAnimacao {
+    0%{
+        background-position: 0% 50% ; 
+    }
+
+    50%{
+        background-position: 50% 100%; 
+    }
+
+    100%{
+        background-position: 0% 50%; 
+    }
+}
+
+#banner-inicial{
+    box-sizing: border-box;
+    padding: min(15px);
+    width: 100%;
+}
+
+#banner-inicial h2{
+    font-size: max(1.5rem);
+    width: 70%;
+    margin-left: 25px;
+    color: aliceblue;
+}
+
+#banner-inicial p{
+    font-size: 1rem;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    color: aliceblue;
+}
+
+
+.box-img-tela-cadastro{
+    box-sizing: border-box;
+    margin: 0 auto;
+    border-radius: 25px;
+    width: 90%;
+    min-height: 250px;
+    height: 25%;
+    margin-top: 5%;
+    background-image: url(./assets/src/img/arquivos-tela-inicial-de-cadastro/Captura\ de\ tela\ 2025-01-13\ 092612.png);
+    background-size: cover;
+    -webkit-box-shadow: inset 2px -4px 44px 16px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 2px -4px 44px 16px rgba(0,0,0,0.75);
+    box-shadow: inset 2px -4px 44px 16px rgba(0,0,0,0.75);
+
+    margin-bottom: 25px;
+    }
+
+
+
+#form-principal form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#form-principal form input{
+    box-sizing: border-box;
+    width: 80%;
+    height: 40px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    border: none;
+    background-color: rgb(241, 240, 255);
+    color: cornflowerblue;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#form-principal form input::placeholder{
+    color: rgb(168, 168, 168);
+    font-size: .8rem;
+    text-align: center;
+}
+
+#form-principal form input{
+    outline: none;
+}
+
+#form-principal form button{
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 50%;
+    font-size: .8rem;
+    background-color: cadetblue;
+    color: aliceblue;
+    cursor: pointer;
+}
