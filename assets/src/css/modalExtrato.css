@@ -28,7 +28,7 @@
     background: linear-gradient(139deg, rgba(70,154,238,1) 0%, rgba(172,227,255,1) 69%, rgba(82,99,137,1) 100%);
     text-align: center;
     background-size: 150%;
-    overflow: scroll;
+    overflow: auto;
 
 }
 

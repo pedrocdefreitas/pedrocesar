@@ -95,3 +95,43 @@
 input:focus {
     outline: none;
 }
+
+@media ( max-width: 320px ) {
+    
+    .container-de-dados{
+        min-height: 100vh;
+        box-sizing: border-box;
+        display: block;
+        margin: 0 auto;
+        font-size: 1.2rem !important;
+    }
+
+    .config-text-destaque{
+        width: 70%;
+        margin-left: 20px;
+        font-size: 1.5rem;
+        margin-top: 20px;
+    }
+
+    #btn-de-confirmar{
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+        font-size: 1rem !important;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .img-servicos {
+        width: 100px;
+        margin-top: 20px;
+    }
+
+    #destinatario-pix, #input-valor-a-enviar{
+        width: 70%;
+    }
+
+    #input-valor-a-enviar{
+        margin-bottom: 25px;
+    }
+}

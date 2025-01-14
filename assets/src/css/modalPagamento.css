@@ -16,7 +16,6 @@
 
 #main-modal-pagamento{
     box-sizing: border-box;
-    overflow: scroll;
     min-height: 100vh;
     width: 100%;
     border-radius: 0px 0px 15px 15px;
@@ -84,4 +83,49 @@
 
 input:focus {
     outline: none;
+}
+
+
+@media ( max-width: 320px ) {
+    .config-text-destaque-min{
+        width: 70%;
+        margin-left: 25px;
+    }
+    
+    .container-de-dados{
+        min-height: 100vh;
+        box-sizing: border-box;
+        display: block;
+        margin: 0 auto;
+        font-size: 1.2rem !important;
+    }
+
+    .config-text-destaque{
+        width: 70%;
+        margin-left: 20px;
+        font-size: 1.5rem;
+        margin-top: 20px;
+    }
+
+    #btn-de-confirmar{
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+        font-size: 1rem !important;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .img-servicos {
+        width: 100px;
+        margin-top: 20px;
+    }
+
+    #cod-de-barras, #input-valor-a-pagar, #data-vencimento-pagamento-boleto{
+        width: 70%;
+    }
+
+
 }

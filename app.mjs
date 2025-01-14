@@ -14,6 +14,18 @@
 
 let SaldoInicial = atualizaSaldo();
 
+if( SaldoInicial == '00'){
+  
+  setTimeout(()=>{
+    document.querySelector('[data-perfil="saldo-user"]')
+    .innerHTML = "Você está sem saldo, faça seu primeiro depósito."
+
+    document.querySelector('[data-perfil="saldo-user"]').style.fontSize  = '15px'
+    document.querySelector('[data-perfil="saldo-user"]').style.color = 'red'
+
+  }, 2000)
+}
+
 let mensagens = {
     saldo: {
       sucesso: "SUCESSO: Saldo atualizado",
@@ -104,16 +116,16 @@ let saudacaoInicial = function () {
     "novembro",
     "dezembro"
   );
-  textoDataPorExtenso.textContent =
-    "" +
-    dayName[now.getDay()] +
-    ", " +
-    now.getDate() +
-    " de " +
-    monName[now.getMonth()] +
-    " de " +
-    now.getFullYear() +
-    ".";
+//   textoDataPorExtenso.textContent =
+//     "" +
+//     dayName[now.getDay()] +
+//     ", " +
+//     now.getDate() +
+//     " de " +
+//     monName[now.getMonth()] +
+//     " de " +
+//     now.getFullYear() +
+//     ".";
 };
 
 let funcaoSaudacao = function(){
@@ -294,8 +306,6 @@ let htmlRequest = function (linkPaginaMenu, idName) {
 
 
 
-
-
 //Funções de operações bancárias.
 function totalOperacaoDebitos() {  
   
@@ -340,11 +350,11 @@ let funcaoSaque = function () {
   btnDeConfirmarSaque.addEventListener("click", function () {
     let valorDigitado = inputSaque.value;
 
-    if (isNaN(valorDigitado)) {
-      window.scrollTo({ top: 0, behavior: 'smooth'})
-      flashMsg(mensagens.saque.erroDeValor)
-      throw new Error("Digite o valor corretamente.");
-    }
+    // if (typeof valorDigitado === 'string') {
+    //   window.scrollTo({ top: 0, behavior: 'smooth'})
+    //   flashMsg(mensagens.saque.erroDeValor)
+    //   throw new Error("Digite o valor corretamente.");
+    // }
 
     if (SaldoInicial < valorDigitado) {
       window.scrollTo({ top: 0, behavior: 'smooth'})
@@ -421,6 +431,8 @@ let funcaoDeposito = function () {
       flashMsg(mensagens.deposito.erroInputVazio)
       throw new Error("O campo de valor está vazio.");
     }
+
+    
 
     let dadosDoDeposito = {
       idClinte: dadosDoUsuario.conta,
@@ -580,6 +592,12 @@ let funcaoPagamento = function () {
 
         dadosDoBoleto: dadosDoCodigoDeBarras,
       };
+
+      if (SaldoInicial < valorBoleto) {
+        window.scrollTo({ top: 0, behavior: 'smooth'})
+        flashMsg(mensagens.saque.erroDeSaldo)
+        throw new Error("Saldo insuficiente.." + SaldoInicial);
+      }
 
       let confirmaPagamento_is = confirm(
         `Deseja confirmar o PAGAMENTO no valor de R$ ${valorBoleto} ?`
