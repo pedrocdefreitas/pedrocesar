@@ -12,12 +12,26 @@
     --clr-itp-10: #dc7c7c; 
 }
 
+/* Chrome e outros */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 
 
 #main-modal-deposito{
+    position: relative;
+    z-index: 100;
     min-height: 100vh;
     box-sizing: border-box;
-    width: 100%;
+    width: 550px;
+    margin: 0 auto;
     
     border-radius: 0px 0px 15px 15px;
     padding: 25px;

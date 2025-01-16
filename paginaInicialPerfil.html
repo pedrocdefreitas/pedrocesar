@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONZA BANCK - CONTA FÁCIL PARA APOSENTADOS E PENSIONISTAS.</title>
+    <title>MAITRE BANKING - CONTA FÁCIL PARA APOSENTADOS E PENSIONISTAS.</title>
     <link rel="shortcut icon" type="image/jpg" href="./assets/src/img/moeda.png"/>
   
     <!-- Importes do Google fontes e FontWasome -->
@@ -24,16 +24,18 @@
         setTimeout( function preLoad(){
             document.querySelector('#pre-load').style.display = 'none'
             document.querySelector('#container-principal-funcoes-iniciais').style.display = 'block'
-        }, 500)
+        }, 50)
 
     </script>
     
 </head>
 
+<span id="container-para-mostrar-menu"></span>
+
+
 <body onload="preLoad()">
-
     <main id="main-pagina-inicial">
-
+        
         <article id="pre-load">
             <span class="clicle"></span>
             <p>Estou preparando tudo pra você...</p>
@@ -41,46 +43,41 @@
             <img src="./assets/src/img/new-logo.png" alt="" width="50%">
         </article>
 
-        
-        <section id="container-principal-funcoes-iniciais" style="display: none;">
-            <span id="bg-container-top-informes"></span>
-                <span id="container-para-mostrar-menu"></span>
+        <section id="container-principal-funcoes-iniciais">
+                <span id="bg-container-top-informes"></span>
+            
+                <article>
 
-                <section>
-
+                <section class="container-com-informacoes-do-usuario">
+                    <img data-perfil="logo" src="./assets/src/img/logo-leve.png" alt="" width="35%">
+                    
                     <div class="box-perfil-logo">
+                      
                         <img data-perfil = 'foto-user'  src="./assets/src/img/icon-usuario.png" alt="imagem-avatar-do-usuario" >
                     </div>
 
                     <div class="box-saudacao">
-                       
-                        
                         <div class="tag-45875df58745">
+                            <p data-perfil="data-sistema" class="data-inicial"></p>
                             <p data-perfil="saudacao" ></p>
                             <p data-perfil="nome"></p>
-                            
-                        </div>
-
-                        <div> 
-                          
-                            <p data-perfil="conta-usuario"></p>
-                        </div>
-                        
+                        </div>                        
                     </div>
 
                     <div class="box-saldo">
                         <div>
+                            
+                            <p data-perfil="conta-usuario"></p>
                             <p data-perfil="saldo-user">00.00</p>
-                            <!-- <span data-perfil="email-user">@pix-nome-usuario</span> -->
                         </div>
 
                         <div class="card-container">
-                            <img src="./assets/src/img/MONZA.png" alt="" width="50px">
-                            <img src="./assets/src/img/bb.png" alt="" width="50px">
+                            <!-- <img src="./assets/src/img/MONZA.png" alt="" width="50px">
+                            <img src="./assets/src/img/bb.png" alt="" width="50px"> -->
 
-                            <p class="numbr-card-person">0000 0000 ... 
+                            <!-- <p class="numbr-card-person">0000 0000 ... 
                                 <i class="fas fa-copy"></i>
-                            </p>
+                            </p> -->
                         </div>
                     
                     </div>
@@ -88,6 +85,7 @@
                 </section>
                 
                 <section id="menu-principal-pagina-inicial">
+
                     <div data-menu-main="saque" type=""><img src="./assets/src/img/icones-menu/sacar.png" alt="" width="20%"><p>sacar</p></div>
         
                     <div data-menu-main="deposito"> <img src="./assets/src/img/icones-menu/depositar.png" alt="" width="20%"><p>depositar</p></div>
@@ -99,28 +97,28 @@
                     <div data-menu-main="extrato"><img src="./assets/src/img/icones-menu/extrato.png" alt="" width="20%"><p>extrato</p></div>
         
                     <div data-menu-main="mais"><img src="./assets/src/img/icones-menu/mais.png" alt="" width="20%"><p>mais...</p></div>
+
                 </section>
 
-                <!-- <section id="atendimento">
-                    <h5>Precisa de ajuda? <i class="fas fa-comments"></i></h5>
-                </section> -->
-
+            
                 <section id="quemSouEu">
-                    <img src="./assets/src/img/foto-perfil.png" alt="" width="30%">
+                    <img src="./assets/src/img/foto-perfil.png" alt="" width="30%" class="img-pedro">
                     <p>Pedro C. de Freitas</p>
                     <p>Desenvolvedor Web</p>
 
                    
-                        <a href="https://github.com/pedrocdefreitas"><img class="link" src="./assets/src/img/git.png" alt="" ></a>
-                        <a href="www.linkedin.com/in/pedro-césar-freitas-4ab597310"><img class="link" src="./assets/src/img/in.png" alt="" ></a>
+                        <a href="https://github.com/pedrocdefreitas"><img class="link" src="./assets/src/img/git.png" alt="" width="25%"></a>
+                        <a href="www.linkedin.com/in/pedro-césar-freitas-4ab597310"><img class="link" src="./assets/src/img/in.png" alt="" width="25%"></a>
 
-                        
-                    <!-- <p data-perfil="data-sistema" class="data-inicial">26 de Dezembro, 2024</p> -->
                 </section>
                 <small>Desenvolvido com muito esforço e dedicação - 2025</small>
                 
+                </article>
+                
 
         </section>
+
     </main>
+    <span id="mensagensInformativas"></span>
 </body>
 </html>
