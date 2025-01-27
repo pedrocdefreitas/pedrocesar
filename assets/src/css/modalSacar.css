@@ -12,11 +12,21 @@
     --clr-itp-10: #dc7c7c; 
 }
 
+/* Chrome e outros */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 
 #main-modal-sacar{
     position: relative;
-    z-index: 100;
+    z-index: 10;
     box-sizing: border-box;
     width: 100%;
     border-radius: 0px 0px 15px 15px;
@@ -25,7 +35,10 @@
     background: linear-gradient(139deg, rgba(70,154,238,1) 0%, rgba(172,227,255,1) 69%, rgba(82,99,137,1) 100%);
     text-align: center;
     background-size: 150%;
+    width: 100%;
+    max-width: 550px;
     min-height: 100vh;
+    margin: 0 auto;
 }
 
 .container-de-dados{
