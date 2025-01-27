@@ -904,6 +904,7 @@ let EXIBE_EXTRATO_AO_CLIENTE = function () {
   console.log(DADOS_DO_EXTRATO);
 
   for (let i = 0; i < DADOS_DO_EXTRATO.length; i++) {
+
     let dadosDoSaldo = JSON.parse(localStorage.getItem("historicoSaldos"));
     console.log(dadosDoSaldo);
 
@@ -927,8 +928,25 @@ let EXIBE_EXTRATO_AO_CLIENTE = function () {
     p_tipo.textContent = DADOS_DO_EXTRATO[i].TIPO_OPERACAO;
 
     let h5 = document.createElement("h5");
-    h5.textContent = DADOS_DO_EXTRATO[i].VALOR;
+    h5.textContent =" R$ " + Number(DADOS_DO_EXTRATO[i].VALOR).toFixed(2).replaceAll('.', ',');
 
+    if( DADOS_DO_EXTRATO[i].TIPO_OPERACAO == 'DÉBITO'){
+      p_tipo.setAttribute('class', 'debito_valores')
+      h5.setAttribute('class', 'debito_valores')
+    }
+
+    if( DADOS_DO_EXTRATO[i].TIPO_OPERACAO == 'SAQUE'){
+      p_tipo.setAttribute('class', 'SAQUE_VALORES')
+      h5.setAttribute('class', 'SAQUE_VALORES')
+    }
+
+    if( DADOS_DO_EXTRATO[i].TIPO_OPERACAO == 'CRÉDITO'){
+      p_tipo.setAttribute('class', 'CREDITO_VALORES')
+      h5.setAttribute('class', 'CREDITO_VALORES')
+    }
+    
+    
+    
     h5.setAttribute("class", "valor-do-movimento");
 
     div_container.append(div_conteudo_do_extrato, div_saldo);
